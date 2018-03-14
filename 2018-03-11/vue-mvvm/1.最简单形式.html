@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 id="model">Hello World</h1>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.js"></script>
+  <script>
+      var vm = {
+        data: {
+          text: ''
+        }
+      }
+
+      Object.defineProperty(vm.data, 'text', {
+        // 当修改data的时候会触发这个方法
+        set: function (newVal) {
+          document.getElementById('model').innerText = newVal
+        },
+        get: function() {
+        }
+      })
+
+      vm.data.text = "我是修改后的数据"
+  </script>
+</body>
+</html>

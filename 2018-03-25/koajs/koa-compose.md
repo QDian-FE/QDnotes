@@ -68,3 +68,7 @@ function compose (middleware) {
 ```
 
 其实只做了一个很简单的工作,第一次进入的时候,执行第一个中间件,然后设定第二个中间件为,传入第一个中间件的next函数,然后递归下去,直到最后一个中间件执行结束后,在逐个释放中间件函数,直到最后一个中间件的时候,next为空,下一轮会直接返回`Promise.resolve`.
+
+有兴趣的可以看看[express如何实现的中间件](https://github.com/expressjs/compression/blob/master/index.js)
+
+你将会感受到Koa的简洁.

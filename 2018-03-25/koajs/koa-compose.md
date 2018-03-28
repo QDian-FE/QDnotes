@@ -44,10 +44,11 @@ function compose (middleware) {
    */
 
   return function (context, next) {
-    // last called middleware #
+    // 最后一次调用的index
     let index = -1
     return dispatch(0)
     function dispatch (i) {
+      // 如果现在调用的中间件index和最后一次的相等,那么说明同一个next被调用了两次
       if (i <= index) return Promise.reject(new Error('next() called multiple times'))
       index = i
       let fn = middleware[i] // 查找当前的中间件

@@ -21,8 +21,23 @@ class Application {
   }
 
   // 挂载回调函数
+  // 中间件函数挂载
   use(fn) {
-    this.callbackFunc = fn
+    this.middlewares.push(fn)
+  }
+
+  // 将中间件合并
+  compose() {
+    // 将middlewares中的函数合并成一个
+    return async ctx => {
+      function creatContext(middleware, oldNext) {
+        return async () => {
+          await middleware(ctx, oldNext)
+        }
+      }
+
+      let len = middleware.length
+    }
   }
 
   // 获取httpserver所需要的callback

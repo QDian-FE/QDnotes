@@ -158,7 +158,7 @@ module.exports = proto;
   3. 输入网址`http://localhost:3000/?name=tom`
   4. 显示: `hellotom`
 ```js
-lication.js
+// lication.js
 let http = require('http')
 
 let context = require('./context')

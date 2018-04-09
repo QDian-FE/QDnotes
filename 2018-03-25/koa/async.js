@@ -14,6 +14,7 @@ async function m3() {
   console.log('m3')
 }
 
+
 // 一: 
 // 首先让m2执行完毕后, await next() 执行m3.
 // 构造一个next函数
@@ -30,6 +31,7 @@ async function m3() {
 // 二: 
 // 对于n各async函数, 希望按照顺序执行
 // 产生nextn的过程抽象为一个函数
+// 每次产生的函数后面 都会添加给老的next函数
 function createNext(middleware, oldNext) {
   return async function () {
     await middleware(oldNext)
@@ -45,13 +47,13 @@ let middleware = [m1, m2, m3]
 let len = middleware.length
 
 let next = async function () {
+  // 返回一个给定的 Promise 解析对象
   return Promise.resolve()
 }
 
 for(var i = len - 1; i >= 0 ; i--) {
+  // 这个 next 不断赋值, 到底什么意思... 
   next = createNext(middleware[i], next)
 }
-// console.log(1)
-console.log(next)
 
 next()

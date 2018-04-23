@@ -24,7 +24,7 @@ koa在解决异步问题的时候,使用了一种新的运行机制,叫做洋葱
 
 [koa-compse](https://github.com/koajs/compose)是Koa构建中间件流程的关键.
 
-## koa-compse详解
+## koa-compose详解
 
 `koa-compse`是一个十分优雅的包,因为采用了递归,只有56行.
 

@@ -37,7 +37,11 @@ routes==>route:{
 const router = new VueRouter({
     mode: 'history',
     routes:[
-      { path: '/', component: Home,name:'home' },
+      { path: '/', component: Home,name:'home'
+       children:{
+         path:'a',component:A,name:'A',
+       }
+      },
       { path: '/foo', component: Foo,name:'foo' },
       { path: '/bar', component: Bar,name:'bar' }
     ]
